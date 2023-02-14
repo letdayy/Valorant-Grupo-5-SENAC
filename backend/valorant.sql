@@ -7,9 +7,6 @@
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,19 +25,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `characters` (
-  `id` int(11) NOT NULL,
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `name` varchar(300) NOT NULL,
-  `real name` varchar(300) NOT NULL,
+  `realName` varchar(300) NOT NULL,
   `country` varchar(300) NOT NULL,
   `class` varchar(300) DEFAULT NULL,
-  `win rate` decimal(11,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `winRate` decimal(11,2) DEFAULT NULL
+);
 
 --
 -- Extraindo dados da tabela `characters`
 --
 
-INSERT INTO `characters` (`id`, `name`, `real name`, `country`, `class`, `win rate`) VALUES
+INSERT INTO `characters` (`id`, `name`, `realName`, `country`, `class`, `winRate`) VALUES
 (1, 'Astra', 'Efia Danso', 'Gana', 'Controlador', '50.80'),
 (2, 'Breach', 'Erik Torsten', 'Suécia', 'Iniciador', NULL),
 (3, 'Brimstone', 'Liam Byrne', 'Estados Unidos', 'Controlador', '52.40'),
@@ -62,8 +59,7 @@ INSERT INTO `characters` (`id`, `name`, `real name`, `country`, `class`, `win ra
 --
 -- Índices para tabela `characters`
 --
-ALTER TABLE `characters`
-  ADD PRIMARY KEY (`id`);
+
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -72,9 +68,6 @@ ALTER TABLE `characters`
 --
 -- AUTO_INCREMENT de tabela `characters`
 --
-ALTER TABLE `characters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

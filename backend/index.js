@@ -2,6 +2,8 @@ import express from "express";
 import mysql from "mysql";
 
 const app = express()
+app.use(express.urlencoded({extended:true}));
+
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -29,18 +31,18 @@ app.get("/characters", (req, res) =>{
 
 //CRIAR UM PERSONAGEM NO BANCO
 app.post("/characters", (req,res)=>{
-    const q = "INSERT INTO characters (`nome`, `descricao`, `img`, `preco`) VALUES (?)"
+    const q = "INSERT INTO characters (`name`, `realName`, `country`, `class`, `winRate`) VALUES (?)"
     const values = [
         req.body.name,
-        req.body.realname,
+        req.body.realName,
         req.body.country,
         req.body.class,
-        req.body.winrate
+        req.body.winRate
     ]
 
     db.query(q,[values], (err,data)=>{
         if(err) return res.json(err)
-        return res.json("Seu livro foi criado com sucesso!")
+        return res.json({message: "Personagem criado com sucesso", Personagem: values})
     })
 })
 
@@ -59,13 +61,14 @@ app.delete("/characters/:id", (req, res)=>{
 //ATUALIZAR UM PERSONAGEM NO BANCO
 app.put("/characters/:id", (req, res)=>{
     const charactersId = req.params.id;
-    const q = "UPDATE characters SET `nome` = ?, `descricao`= ?, `img`= ?, `preco`= ? WHERE id = ?"
+    const q = "UPDATE characters SET `name` = ?, `realName`= ?, `country`= ?, `class`= ?, `winRate` = ? WHERE id = ?"
 
     const values = [
-        req.body.nome,
-        req.body.descricao,
-        req.body.img,
-        req.body.preco
+        req.body.name,
+        req.body.realName,
+        req.body.country,
+        req.body.class,
+        req.body.winRate
     ]
     db.query(q,[...values,charactersId], (err,data)=>{
         if(err) return res.json(err)
@@ -76,5 +79,5 @@ app.put("/characters/:id", (req, res)=>{
 
 
 app.listen(8800, () => {
-    console.log("Backend conectado!!!")
+    console.log("servidor rodando em: http://localhost:8800")
 });
