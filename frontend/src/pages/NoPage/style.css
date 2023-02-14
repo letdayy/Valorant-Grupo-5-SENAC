@@ -1,0 +1,8 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+h1 img {
+    width: 50vw;
+}
