@@ -20,9 +20,9 @@ app.get("/", (req, res) =>{
     res.json("Oi, este é o backend")
 });
 
-//Selecionar todos os personagens do banco de dados
-app.get("/characters", (req, res) =>{
-    const q = "SELECT * FROM characters" //characters é o nome da tabela.
+//Selecionar todas as habilidades do banco de dados
+app.get("/habilidades", (req, res) =>{
+    const q = "SELECT * FROM habilidades" //habilidades é o nome da tabela.
     db.query(q,(err, data) => {
         if(err) return res.json(err)
         return res.json(data)
@@ -39,6 +39,20 @@ app.post("/characters", (req,res)=>{
         req.body.class,
         req.body.winRate
     ]
+    })  
+//CRIAR UMA HABILIDADE NO BANCO
+
+app.post("/habilidades", (req,res)=>{
+    const q = "INSERT INTO habilidades (`id`, `Displacement`, `Habilidade`, `Max_carregamento`, `Custo`, `Funcoes`) VALUES (?)"
+    const values = [
+        req.body.id,
+        req.body.Displacement,
+        req.body.Habilidade,
+        req.body.Agente,
+        req.body.Max_carregamento,
+        req.body.Custo,
+        req.body.Funcoes,
+    ]
 
     db.query(q,[values], (err,data)=>{
         if(err) return res.json(err)
@@ -47,10 +61,10 @@ app.post("/characters", (req,res)=>{
 })
 
 
-//DELETAR UM PERSONAGEM DO BANCO
-app.delete("/characters/:id", (req, res)=>{
-    const charactersId = req.params.id;
-    const q = "DELETE FROM characters  WHERE id = ?"
+//DELETAR UMA HABILIDADE DO BANCO
+app.delete("/habilidades/:id", (req, res)=>{
+    const habilidadesId = req.params.id;
+    const q = "DELETE FROM habilidades  WHERE id = ?"
 
     db.query(q,[charactersId], (err,data)=>{
         if(err) return res.json(err)
@@ -70,7 +84,22 @@ app.put("/characters/:id", (req, res)=>{
         req.body.class,
         req.body.winRate
     ]
-    db.query(q,[...values,charactersId], (err,data)=>{
+})
+//ATUALIZAR UMA HABILIDADE NO BANCO
+app.put("/habilidades/:id", (req, res)=>{
+    const habilidadesId = req.params.id;
+    const q = "UPDATE habilidades SET `Displacement` = ?, `habilidade`= ?, `Agente`= ?, `Max_carregamento`= ?,`Custo`= ? `Funcoes`= ? WHERE id = ?"
+
+    const values = [
+        req.body.id,
+        req.body.Displacement,
+        req.body.Habilidade,
+        req.body.Agente,
+        req.body.Max_carregamento,
+        req.body.Custo,
+        req.body.Funcoes,
+    ]
+    db.query(q,[...values,habilidadesId], (err,data)=>{
         if(err) return res.json(err)
         return res.json("Atualizado com sucesso!")
     })
