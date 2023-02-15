@@ -77,7 +77,61 @@ INSERT INTO `mapas` (`id`, `mapa`, `local`, `curiosidade`) VALUES
 (8, 'Ascent', 'Veneza, Itália', 'Ascent tem um meio enorme e dominá-lo pode ser crucial para a vitória. Nos bombsites, também há portas interativas, que podem ser fechadas (e destruídas). Aqui, vale utilizar agentes que tenham smokes ou bangs para bloquear a visão adversária, e também personagens que identifiquem a localização inimiga.'),
 (9, 'The Range', 'Veneza, Itália', 'Mapa de treinamento de VALORANT. É possível testar as habilidades, experimentar armas, plantar e desarmar spikes e mais. O local também abriga o escritório de Brimstone, que possui algumas curiosidades sobre os agentes e a lore do jogo.');
 
+-- --------------------------------------------------------
 
+--
+-- Estrutura da tabela `skins`
+--
+
+CREATE TABLE `skins` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `edition` varchar(45) NOT NULL,
+  `collection` varchar(45) NOT NULL,
+  `weapon` varchar(45) NOT NULL,
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `skins`
+--
+
+INSERT INTO `skins` (`id`, `name`, `edition`, `collection`, `weapon`, `price`) VALUES
+(1, 'Luxe Ghost', 'Select', 'Luxe', 'Ghost', 875),
+(2, 'Luxe Spectre', 'Select', 'Luxe', 'Spectre', 875),
+(3, 'Luxe Judge', 'Select', 'Luxe', 'Judge', 875),
+(4, 'Luxe Vandal', 'Select', 'Luxe', 'Vandal', 875),
+(5, 'Luxe Operator', 'Select', 'Luxe', 'Operator', 875),
+(6, 'Luxe Knife', 'Select', 'Luxe', 'Knife', 1750),
+(7, 'Aristocrat Sheriff', 'Deluxe', 'Aristocrat', 'Sheriff', 1275),
+(8, 'Aristocrat Stinger', 'Deluxe', 'Aristocrat', 'Stinger', 1275),
+(9, 'Aristocrat Bulldog', 'Deluxe', 'Aristocrat', 'Bulldog', 1275),
+(10, 'Aristocrat Vandal', 'Deluxe', 'Aristocrat', 'Vandal', 1275),
+(11, 'Aristocrat Ares', 'Deluxe', 'Aristocrat', 'Ares', 1275),
+(12, 'Snowfall Classic', 'Deluxe', 'Snowfall', 'Classic', 1275),
+(13, 'Celestial Frenzy', 'Premium', 'Celestial', 'Frenzy', 1775),
+(14, 'Celestial Judge', 'Premium', 'Celestial', 'Judge', 1775),
+(15, 'Celestial Phantom', 'Premium', 'Celestial', 'Phantom', 1775),
+(16, 'Celestial Ares', 'Premium', 'Celestial', 'Ares', 1775),
+(17, 'Celestial Fan', 'Premium', 'Celestial', 'Knife Fan', 3550),
+(18, 'Origin Operator', 'Premium', 'Origin', 'Operator', 1775),
+(19, 'Ruination Ghost', 'Exclusive', 'Ruination', 'Ghost', 2175),
+(20, 'Ruination Spectre', 'Exclusive', 'Ruination', 'Spectre', 2175),
+(21, 'Ruination Guardian', 'Exclusive', 'Ruination', 'Guardian', 2175),
+(22, 'Ruination Phantom', 'Exclusive', 'Ruination', 'Phantom', 2175),
+(23, 'SPECTRUM Bulldog', 'Exclusive', 'Spectrum', 'Bulldog', 2675),
+(24, 'SPECTRUM Guardian', 'Exclusive', 'Spectrum', 'Guardian', 2675),
+(25, 'Elderflame Frenzy', 'Ultra', 'Elderflame', 'Frenzy', 2475),
+(26, 'Elderflame Judge', 'Ultra', 'Elderflame', 'Judge', 2475),
+(27, 'Elderflame Vandal', 'Ultra', 'Elderflame', 'Vandal', 2475),
+(28, 'Elderflame Operator', 'Ultra', 'Elderflame', 'Operator', 2475),
+(29, 'Elderflame Dagger', 'Ultra', 'Elderflame', 'Knife Dagger', 4950),
+(30, 'Protocol 781-A Sheriff', 'Ultra', 'Protocol 781-A', 'Sheriff', 2475);
+
+--
+-- Indexes for dumped tables
+--
+  
 --
 -- Índices para tabelas despejadas
 --
