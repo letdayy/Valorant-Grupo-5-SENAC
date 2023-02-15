@@ -29,6 +29,15 @@ app.get("/habilidades", (req, res) =>{
     })
 })
 
+//SELECIONAR TODAS OS PERSONAGENS NO BANCO DE DADOS
+app.get("/characters", (req, res) =>{
+    const q = "SELECT * FROM characters" //characters é o nome da tabela.
+    db.query(q,(err, data) => {
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
 //CRIAR UM PERSONAGEM NO BANCO
 app.post("/characters", (req,res)=>{
     const q = "INSERT INTO characters (`name`, `realName`, `country`, `class`, `winRate`) VALUES (?)"
@@ -40,6 +49,18 @@ app.post("/characters", (req,res)=>{
         req.body.winRate
     ]
     })  
+
+
+    //DELETAR UM PERSONAGEM DO BANCO
+app.delete("/characters/:id", (req, res)=>{
+    const charactersId = req.params.id;
+    const q = "DELETE FROM characters WHERE id = ?"
+
+    db.query(q,[charactersId], (err,data)=>{
+        if(err) return res.json(err)
+        return res.json("Deletada com sucesso!")
+    })
+})
 //CRIAR UMA HABILIDADE NO BANCO
 
 app.post("/habilidades", (req,res)=>{
