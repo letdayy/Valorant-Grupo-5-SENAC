@@ -21,10 +21,10 @@
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `characters`
+-- Estrutura da tabela `personagens`
 --
 
-CREATE TABLE `characters` (
+CREATE TABLE `personagens` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `name` varchar(300) NOT NULL,
   `realName` varchar(300) NOT NULL,
@@ -34,10 +34,10 @@ CREATE TABLE `characters` (
 );
 
 --
--- Extraindo dados da tabela `characters`
+-- Extraindo dados da tabela `personagens`
 --
 
-INSERT INTO `characters` (`id`, `name`, `realName`, `country`, `class`, `winRate`) VALUES
+INSERT INTO `personagens` (`id`, `name`, `realName`, `country`, `class`, `winRate`) VALUES
 (1, 'Astra', 'Efia Danso', 'Gana', 'Controlador', '50.80'),
 (2, 'Breach', 'Erik Torsten', 'Suécia', 'Iniciador', NULL),
 (3, 'Brimstone', 'Liam Byrne', 'Estados Unidos', 'Controlador', '52.40'),
@@ -199,7 +199,7 @@ INSERT INTO `skins` (`id`, `name`, `edition`, `collection`, `weapon`, `price`) V
 --
 
 --
--- Índices para tabela `characters`
+-- Índices para tabela `personagens`
 --
 
 
@@ -208,7 +208,7 @@ INSERT INTO `skins` (`id`, `name`, `edition`, `collection`, `weapon`, `price`) V
 --
 
 --
--- AUTO_INCREMENT de tabela `characters`
+-- AUTO_INCREMENT de tabela `personagens`
 --
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
