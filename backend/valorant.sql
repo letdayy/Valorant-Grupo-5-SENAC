@@ -123,7 +123,7 @@ CREATE TABLE `mapas` (
   `mapa` varchar(50) NOT NULL,
   `local` varchar(50) NOT NULL,
   `curiosidade` varchar(1000) NOT NULL
-  
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 --
 -- Extraindo dados da tabela `mapas`
 --
