@@ -1,6 +1,6 @@
 .cards {
     background-image: url(../../images/char.jpg);
-    height: 100vh;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
