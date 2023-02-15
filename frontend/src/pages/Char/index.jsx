@@ -3,6 +3,7 @@ import React from 'react';
 import './style.css';
 import axios from 'axios';
 import { useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
     const [personagens,setPersonagens] = useState([])
@@ -12,7 +13,6 @@ export default function Home() {
             try{
                 const res = await axios.get("http://localhost:8800/personagens")
                 setPersonagens(res.data);
-                console.log(res.data[0].name);
 
             }catch(err){
                 console.log(err)
@@ -26,10 +26,20 @@ export default function Home() {
 
 
     return <div className='cards'>
+        <div className='principal'>
         <h1>
             Personagens
         </h1>
-        <div className="card">
+
+        <button>
+            <Link to="/CharAdd" >
+            +
+            </Link>
+        </button>
+
+        </div>
+
+        <div className='main'>
 
             {personagens.map((personagem) => (
                 <div className="personagem" key={personagem.id}>
@@ -52,7 +62,8 @@ export default function Home() {
             </div>
             ))}
 
-            
+        
+
         </div>
     </div>
 }

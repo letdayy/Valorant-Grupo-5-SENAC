@@ -6,7 +6,7 @@
     text-decoration: none;
 }
 
-h1 {
+.body h1 {
     margin-top: 100px;
 }
 
@@ -16,7 +16,7 @@ img {
     margin: 50px auto;
 }
 
-button{
+.buttons button{
     background-color: red;
     color: #f8f8f8;
     width: 200px;
