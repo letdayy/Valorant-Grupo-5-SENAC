@@ -132,8 +132,59 @@ app.put("/skins/:id", (req, res)=>{
     })
 })
 
+//Selecionar todos os mapas do banco de dados
+app.get("/mapas", (req, res) =>{
+    const q = "SELECT * FROM mapas"
+    db.query(q,(err, data) => {
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
 
+//CRIAR UM MAPA NO BANCO
+app.post("/mapas", (req,res)=>{
+    const q = "INSERT INTO characters (`mapa`, `local`, `curiosidade`) VALUES (?)"
+    const values = [
+        req.body.mapa,
+        req.body.local,
+        req.body.curiosidade
+    ]
+
+    db.query(q,[values], (err,data)=>{
+        if(err) return res.json(err)
+        return res.json({message: "Mapa criado com sucesso", Mapa: values})
+    })
+})
+
+
+//DELETAR UM MAPA DO BANCO
+app.delete("/mapas/:id", (req, res)=>{
+    const mapasId = req.params.id;
+    const q = "DELETE FROM mapas  WHERE id = ?"
+
+    db.query(q,[mapasId], (err,data)=>{
+        if(err) return res.json(err)
+        return res.json("Deletado com sucesso!")
+    })
+})
+
+//ATUALIZAR UM MAPA NO BANCO
+app.put("/mapas/:id", (req, res)=>{
+    const mapasId = req.params.id;
+    const q = "UPDATE mapas SET `mapa` = ?, `local`= ?, `curiosidade`= ?"
+
+    const values = [
+        req.body.mapa,
+        req.body.local,
+        req.body.curiosidade
+    ]
+    db.query(q,[...values,mapasId], (err,data)=>{
+        if(err) return res.json(err)
+        return res.json("Atualizado com sucesso!")
+    })
+})
 
 app.listen(8800, () => {
     console.log("servidor rodando em: http://localhost:8800")
 });
+
