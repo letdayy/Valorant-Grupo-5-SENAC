@@ -1,8 +1,9 @@
 import express from "express";
 import mysql from "mysql";
+import cors from 'cors';
 
 const app = express()
-app.use(express.urlencoded({extended:true}));
+
 
 
 const db = mysql.createConnection({
@@ -15,6 +16,8 @@ const db = mysql.createConnection({
 //código que faz a conexão com o banco de dados
 
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(cors());
 
 app.get("/", (req, res) =>{
     res.json("Oi, este é o backend")
@@ -30,8 +33,8 @@ app.get("/habilidades", (req, res) =>{
 })
 
 //SELECIONAR TODAS OS PERSONAGENS NO BANCO DE DADOS
-app.get("/characters", (req, res) =>{
-    const q = "SELECT * FROM characters" //characters é o nome da tabela.
+app.get("/personagens", (req, res) =>{
+    const q = "SELECT * FROM personagens" //personagens é o nome da tabela.
     db.query(q,(err, data) => {
         if(err) return res.json(err)
         return res.json(data)
@@ -39,8 +42,8 @@ app.get("/characters", (req, res) =>{
 })
 
 //CRIAR UM PERSONAGEM NO BANCO
-app.post("/characters", (req,res)=>{
-    const q = "INSERT INTO characters (`name`, `realName`, `country`, `class`, `winRate`) VALUES (?)"
+app.post("/personagens", (req,res)=>{
+    const q = "INSERT INTO personagens (`name`, `realName`, `country`, `class`, `winRate`) VALUES (?)"
     const values = [
         req.body.name,
         req.body.realName,
@@ -52,11 +55,11 @@ app.post("/characters", (req,res)=>{
 
 
     //DELETAR UM PERSONAGEM DO BANCO
-app.delete("/characters/:id", (req, res)=>{
-    const charactersId = req.params.id;
-    const q = "DELETE FROM characters WHERE id = ?"
+app.delete("/personagens/:id", (req, res)=>{
+    const personagensId = req.params.id;
+    const q = "DELETE FROM personagens WHERE id = ?"
 
-    db.query(q,[charactersId], (err,data)=>{
+    db.query(q,[personagensId], (err,data)=>{
         if(err) return res.json(err)
         return res.json("Deletada com sucesso!")
     })
@@ -87,16 +90,16 @@ app.delete("/habilidades/:id", (req, res)=>{
     const habilidadesId = req.params.id;
     const q = "DELETE FROM habilidades  WHERE id = ?"
 
-    db.query(q,[charactersId], (err,data)=>{
+    db.query(q,[personagensId], (err,data)=>{
         if(err) return res.json(err)
         return res.json("Deletado com sucesso!")
     })
 })
 
 //ATUALIZAR UM PERSONAGEM NO BANCO
-app.put("/characters/:id", (req, res)=>{
-    const charactersId = req.params.id;
-    const q = "UPDATE characters SET `name` = ?, `realName`= ?, `country`= ?, `class`= ?, `winRate` = ? WHERE id = ?"
+app.put("/personagens/:id", (req, res)=>{
+    const personagensId = req.params.id;
+    const q = "UPDATE personagens SET `name` = ?, `realName`= ?, `country`= ?, `class`= ?, `winRate` = ? WHERE id = ?"
 
     const values = [
         req.body.name,
@@ -193,7 +196,7 @@ app.get("/mapas", (req, res) =>{
 
 //CRIAR UM MAPA NO BANCO
 app.post("/mapas", (req,res)=>{
-    const q = "INSERT INTO characters (`mapa`, `local`, `curiosidade`) VALUES (?)"
+    const q = "INSERT INTO personagens (`mapa`, `local`, `curiosidade`) VALUES (?)"
     const values = [
         req.body.mapa,
         req.body.local,
