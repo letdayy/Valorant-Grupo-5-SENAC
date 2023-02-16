@@ -13,7 +13,7 @@ export default function Home() {
 
         <div className='buttons'>
             <button>
-                <Link to="/Char">
+                <Link to="/Character">
                     Personagens
                 </Link>
             </button>
@@ -26,7 +26,8 @@ export default function Home() {
 
             <button>Armas</button>
 
-            <button>Habilidades</button>
+            <button>
+                <Link to="/Habilities">Habilidades</Link></button>
 
             <button>Mapas</button>
 

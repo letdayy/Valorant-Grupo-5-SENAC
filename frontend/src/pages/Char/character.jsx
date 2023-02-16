@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
-import './style.css';
+import './character.css';
 import axios from 'axios';
 import { useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 
-export default function Home() {
+export default function Character() {
     const [personagens,setPersonagens] = useState([])
 
     useEffect(()=>{
@@ -12,7 +13,6 @@ export default function Home() {
             try{
                 const res = await axios.get("http://localhost:8800/personagens")
                 setPersonagens(res.data);
-                console.log(res.data[0].name);
 
             }catch(err){
                 console.log(err)
@@ -21,15 +21,32 @@ export default function Home() {
         fetchAllPersonagens()
     }, [])
 
-
-
+    const delPersonagem = async (id)=>{
+        try {
+            await axios.delete("http://localhost:8800/personagens/"+id)
+            window.location.reload()
+        } catch (err) {
+            console.log(err)
+            
+        }
+    }
 
 
     return <div className='cards'>
+        <div className='principal'>
         <h1>
             Personagens
         </h1>
-        <div className="card">
+
+        <button>
+            <Link to="/CharAdd" >
+            +
+            </Link>
+        </button>
+
+        </div>
+
+        <div className='main'>
 
             {personagens.map((personagem) => (
                 <div className="personagem" key={personagem.id}>
@@ -49,10 +66,15 @@ export default function Home() {
                     Classe: {personagem.class}
                 </li>
             </ul>
+            <div className='button'>
+            <button className='deleteButton' onClick={()=>delPersonagem(personagem.id)}>Deletar</button>
+            <button className='updateButton'><Link to={`/UpdateChar/${personagem.id}`}>Atualizar</Link></button>
             </div>
+        </div>
             ))}
 
-            
+        
+
         </div>
     </div>
 }

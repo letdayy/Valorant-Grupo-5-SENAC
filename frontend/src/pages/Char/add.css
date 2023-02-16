@@ -1,0 +1,29 @@
+
+.add h1 {
+    margin-top: 50px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 30px auto;
+}
+
+form button {
+    width: 200px;
+    height: 50px;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-color: #8dc9b5;
+    cursor: pointer;
+}
+
+form input {
+    display: flex;
+    border-style:solid;
+    margin: 10px;
+    height: 30px;
+    padding-left: 5px;
+}
