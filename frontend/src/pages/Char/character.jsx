@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
-import './style.css';
+import './character.css';
 import axios from 'axios';
 import { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Home() {
+export default function Character() {
     const [personagens,setPersonagens] = useState([])
 
     useEffect(()=>{
@@ -22,7 +22,15 @@ export default function Home() {
     }, [])
 
 
-
+    const delPersonagem = async (id)=>{
+        try {
+            await axios.delete("http://localhost:8800/personagens/"+id)
+            window.location.reload()
+        } catch (err) {
+            console.log(err)
+            
+        }
+    }
 
 
     return <div className='cards'>
@@ -59,7 +67,11 @@ export default function Home() {
                     Classe: {personagem.class}
                 </li>
             </ul>
+            <div className='button'>
+            <button className='deleteButton' onClick={()=>delPersonagem(personagem.id)}>Deletar</button>
+            <button className='updateButton'>Atualizar</button>
             </div>
+        </div>
             ))}
 
         

@@ -1,8 +1,8 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import NoPage from './pages/NoPage';
-import Char from './pages/Char';
-import CharAdd from './pages/CharAdd';
+import Character from './pages/Char/character';
+import CharAdd from './pages/Char/add';
 
 export default function AppRouter() {
     return (
@@ -10,7 +10,7 @@ export default function AppRouter() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path="*" element={<NoPage />} />
-                <Route path="/Char" element={<Char />} />
+                <Route path="/Character" element={<Character />} />
                 <Route path="/CharAdd" element={<CharAdd />} />
             </Routes>
         </Router>

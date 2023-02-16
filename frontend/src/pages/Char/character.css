@@ -45,6 +45,29 @@
     margin-left: 40px;
 }
 
+.deleteButton, .updateButton {
+    background-color:#7fffd4;
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+    margin:  10px;
+}
+
+.deleteButton {
+    background-color: #f75c36;
+}
+
+.deleteButton:hover, .updateButton:hover {
+    background-color: #9cc4f1;
+    transform: scale(1.1);
+    transition: 250ms;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}
+
 .personagem {
     margin: 30px;
     background-color: #edc0ba;

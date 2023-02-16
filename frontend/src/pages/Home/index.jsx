@@ -13,7 +13,7 @@ export default function Home() {
 
         <div className='buttons'>
             <button>
-                <Link to="/Char">
+                <Link to="/Character">
                     Personagens
                 </Link>
             </button>
