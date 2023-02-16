@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import NoPage from './pages/NoPage';
 import Character from './pages/Char/character';
 import CharAdd from './pages/Char/add';
+import Habilities from './pages/Habilidades/Habilities';
 
 export default function AppRouter() {
     return (
@@ -12,6 +13,7 @@ export default function AppRouter() {
                 <Route path="*" element={<NoPage />} />
                 <Route path="/Character" element={<Character />} />
                 <Route path="/CharAdd" element={<CharAdd />} />
+                <Route path="/Habilities" element={<Habilities />} />
             </Routes>
         </Router>
     );
