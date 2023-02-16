@@ -4,6 +4,7 @@ import NoPage from './pages/NoPage';
 import Character from './pages/Char/character';
 import CharAdd from './pages/Char/add';
 import UpdateChar from './pages/Char/update';
+import Habilities from './pages/Habilidades/Habilities';
 
 export default function AppRouter() {
     return (
