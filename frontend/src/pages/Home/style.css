@@ -1,24 +1,49 @@
 * {
     padding: 0;
     margin: 0;
+    list-style-type: none;
+    border-style: none;
+    text-decoration: none;
 }
 
-.body {
-    width: 100%;
-    height: 100%;
-    background-image: url(../../images/valorant.avif);
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 90%;
-    display: flex;
-    justify-content: center;
+.body h1 {
+    margin-top: 100px;
 }
 
-.card {
-    background-color: #2d9a9c;
-    color: #222530;
-    width: 800px;
-    height: 1200px;
+img {
+    width: 50vw;
     display: flex;
-    flex-direction: column;
+    margin: 50px auto;
+}
+
+.buttons button{
+    background-color: red;
+    color: #f8f8f8;
+    width: 200px;
+    height: 50px;
+    margin: 2rem;
+    border-radius: 10px;
+}
+
+button a {
+    color: white;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    img {
+        width: 100vw;
+    }
+
+    
 }
