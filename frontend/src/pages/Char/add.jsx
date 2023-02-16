@@ -7,10 +7,10 @@ import './add.css';
 export default function CharAdd() {
 
     const [personagem, setPersonagem] = useState({
-        name:"aaaa",
-        realName:"aaaa",
-        country:"aaa",
-        class:"aaa",
+        name:"",
+        realName:"",
+        country:"",
+        class:"",
         winRate: 0
     });
 
