@@ -41,6 +41,15 @@ app.get("/personagens", (req, res) =>{
     })
 })
 
+app.get("/personagens/:id", (req, res) =>{
+    const personagensId = req.params.id
+    const q = `SELECT * FROM personagens WHERE id = ${personagensId}`;  //personagens é o nome da tabela.
+    db.query(q,(err, data) => {
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
 //CRIAR UM PERSONAGEM NO BANCO
 app.post("/personagens", (req,res)=>{
     const q = "INSERT INTO personagens (`name`, `realName`, `country`, `class`, `winRate`) VALUES (?)"
@@ -114,6 +123,12 @@ app.put("/personagens/:id", (req, res)=>{
         req.body.class,
         req.body.winRate
     ]
+
+    db.query(q, [...values, personagensId], (err, data) => {
+        if (err) return res.json(err)
+        return res.json('atualizado com sucesso')
+
+    })
 })
 //ATUALIZAR UMA HABILIDADE NO BANCO
 app.put("/habilidades/:id", (req, res)=>{

@@ -21,7 +21,6 @@ export default function Character() {
         fetchAllPersonagens()
     }, [])
 
-
     const delPersonagem = async (id)=>{
         try {
             await axios.delete("http://localhost:8800/personagens/"+id)
@@ -69,7 +68,7 @@ export default function Character() {
             </ul>
             <div className='button'>
             <button className='deleteButton' onClick={()=>delPersonagem(personagem.id)}>Deletar</button>
-            <button className='updateButton'>Atualizar</button>
+            <button className='updateButton'><Link to={`/UpdateChar/${personagem.id}`}>Atualizar</Link></button>
             </div>
         </div>
             ))}
