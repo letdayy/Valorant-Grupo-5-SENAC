@@ -237,6 +237,64 @@ app.put("/mapas/:id", (req, res)=>{
     })
 })
 
+//SELECIONAR TODAS AS ARMAS DO BANCO
+app.get("/armas", (req, res) =>{
+    const q = "SELECT * FROM armas"
+    db.query(q,(err, data) => {
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+//CRIAR UMA ARMA NO BANCO 
+app.post("/armas", (req,res)=>{
+    const q = "INSERT INTO characters (`pistolas`, `escopetas`, `submetralhadoras`, `rifles`) VALUES (?)"
+    const values = [
+        req.body.pistolas,
+        req.body.escopetas,
+        req.body.submetralhadoras,
+        req.body.rifles
+    ]
+
+    db.query(q,[values], (err,data)=>{
+        if(err) return res.json(err)
+        return res.json({message: "Arma criada com sucesso", Mapa: values})
+    })
+})
+
+
+//DELETAR UMA ARMA DO BANCO
+app.delete("/armas/:id", (req, res)=>{
+    const armasId = req.params.id;
+    const q = "DELETE FROM armas  WHERE id = ?"
+
+    db.query(q,[armasId], (err,data)=>{
+        if(err) return res.json(err)
+        return res.json("Deletado com sucesso!")
+    })
+})
+
+//ATUALIZAR UMA ARMA NO BANCO
+app.put("/armas/:id", (req, res)=>{
+    const armasId = req.params.id;
+    const q = "UPDATE armas SET `pistolas` = ?, `escopetas`= ?, `submetralhadoras`= ?, `rifles`= ?"
+
+    const values = [
+        req.body.pistolas,
+        req.body.escopetas,
+        req.body.submetralhadoras,
+        req.body.rifles
+    ]
+    db.query(q,[...values,armasId], (err,data)=>{
+        if(err) return res.json(err)
+        return res.json("Atualizado com sucesso!")
+    })
+})
+
+
+
+
+
 app.listen(8800, () => {
     console.log("servidor rodando em: http://localhost:8800")
 });

@@ -190,6 +190,26 @@ INSERT INTO `skins` (`id`, `name`, `edition`, `collection`, `weapon`, `price`) V
 (29, 'Elderflame Dagger', 'Ultra', 'Elderflame', 'Knife Dagger', 4950),
 (30, 'Protocol 781-A Sheriff', 'Ultra', 'Protocol 781-A', 'Sheriff', 2475);
 
+
+
+--
+
+--
+
+
+
+
+CREATE TABLE armas (
+  `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `name` varchar(50),
+  `type` varchar(50)
+)
+
+INSERT INTO `armas` (`id`, `Name`, `Type`) VALUES
+(1, 'classic', 'pistola'),
+(2, 'bucky', 'escopeta'),
+(3, 'stinger','submetralhadora'),
+(4, 'guardian','rifles'); 
 --
 -- Indexes for dumped tables
 --
