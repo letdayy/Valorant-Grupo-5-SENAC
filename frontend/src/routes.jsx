@@ -15,6 +15,7 @@ export default function AppRouter() {
                 <Route path="/Character" element={<Character />} />
                 <Route path="/CharAdd" element={<CharAdd />} />
                 <Route path='/UpdateChar/:id' element={<UpdateChar />} />
+                <Route path='/Habilities' element={<Habilities />} />
             </Routes>
         </Router>
     );
