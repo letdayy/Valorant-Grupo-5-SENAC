@@ -27,7 +27,13 @@
     flex-direction: column;
     margin: 0 auto;
 }
-
+.painel {
+    background-image: url(../../images/VALORANT.jpg);
+    margin: 0 auto;
+}
+h1 {
+    color: white;
+}
 .cards img {
     width: 200px;
 }
