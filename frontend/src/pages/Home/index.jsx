@@ -26,7 +26,8 @@ export default function Home() {
 
             <button>Armas</button>
 
-            <button>Habilidades</button>
+            <button>
+                <Link to="/Habilities">Habilidades</Link></button>
 
             <button>Mapas</button>
 
