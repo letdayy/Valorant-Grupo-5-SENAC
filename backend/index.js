@@ -51,7 +51,13 @@ app.post("/personagens", (req,res)=>{
         req.body.class,
         req.body.winRate
     ]
-    })  
+
+    db.query(q,[values], (err,data)=>{
+        if(err) return res.json(err)
+        return res.json({message: "Personagem criado com sucesso", Personagem: values})
+    })
+    })
+   
 
 
     //DELETAR UM PERSONAGEM DO BANCO
